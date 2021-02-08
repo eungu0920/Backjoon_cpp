@@ -4,6 +4,8 @@ using namespace std;
 
 #define MAX 100
 
+// 안전 영역
+
 int map[MAX][MAX];
 bool visit[MAX][MAX];
 bool check[MAX][MAX];
