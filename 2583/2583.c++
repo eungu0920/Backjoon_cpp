@@ -7,6 +7,8 @@ using namespace std;
 
 #define MAX 100
 
+// 영역 구하기
+
 bool visit[MAX][MAX];
 vector<int> v;
 
