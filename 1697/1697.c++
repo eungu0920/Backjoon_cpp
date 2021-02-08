@@ -19,16 +19,16 @@ void bfs(int x) {
     while(!q.empty()) {
         x = q.front();
 
-        if(x == K)
+        if(x == K) // 동생의 위치를 만나는 경우 while 탈출
             break;
 
         q.pop();
 
         for(int i = 0; i < 3; i++) {
             int nx = 0;
-            if(dx[i] == 2) {
+            if(dx[i] == 2) { // 순간이동을 하는 경우
                 nx = x * dx[i];
-            } else {
+            } else { // 그냥 걷는 경우
                 nx = x + dx[i];
             }
 
@@ -47,7 +47,7 @@ void bfs(int x) {
 int main() {
     cin >> N >> K;
 
-    if(N >= K) {
+    if(N >= K) { // 수빈이의 위치가 더 앞에 있는 경우 or 같은 자리인 경우
         cout << N - K << endl;
     } else {
         bfs(N);
