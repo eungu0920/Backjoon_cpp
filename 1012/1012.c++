@@ -5,6 +5,8 @@ using namespace std;
 
 #define MAX 50
 
+// 유기농 배추
+
 int M, N, K;
 int map[MAX][MAX];
 bool visit[MAX][MAX];
