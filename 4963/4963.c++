@@ -5,6 +5,8 @@ using namespace std;
 
 #define MAX 50
 
+// 섬의 개수
+
 int w, h;
 int map[MAX][MAX];
 bool visit[MAX][MAX];
