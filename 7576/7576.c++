@@ -5,6 +5,8 @@ using namespace std;
 
 #define MAX 1000
 
+// 토마토
+
 int map[MAX][MAX];
 bool visit[MAX][MAX];
 
