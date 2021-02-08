@@ -47,7 +47,7 @@ void bfs(int x) {
 int main() {
     cin >> N >> K;
 
-    if(N >= K) { // 수빈이의 위치가 더 앞에 있는 경우 or 같은 자리인 경우
+    if(N >= K) { // 수빈이의 위치가 더 앞에 있는 경우 or 같은 자리인 때
         cout << N - K << endl;
     } else {
         bfs(N);
