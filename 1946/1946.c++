@@ -3,6 +3,8 @@
 
 using namespace std;
 
+// 신입 사원
+
 int main() {
     int test_case;
     cin >> test_case;
