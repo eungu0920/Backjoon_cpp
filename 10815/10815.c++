@@ -15,6 +15,7 @@ int main() {
     }
 
     sort(arr, arr + N);
+    // 이분탐색을 수행하기위해 정렬을 수행
 
     scanf("%d", &M);
 
@@ -24,12 +25,14 @@ int main() {
         int right = N - 1;
         int result = 0;
 
-        cin >> temp;
+        scanf("%d", &temp);
 
         while(left <= right) {
+            // 이분 탐색
             int mid = (left + right) / 2;
 
             if(temp == arr[mid]) {
+                // 중복값이 없으므로 일치하면 바로 결과에 1을 넣고 while문 탈출
                 result = 1;
                 break;
             } else if(temp > arr[mid]) {
