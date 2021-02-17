@@ -13,7 +13,7 @@ int main() {
     cin >> L >> s;
 
     for(int i = 0; i < L; i++) {
-        result += ((s[i] - 96) * x) % 1234567891;
+        result = (result + (s[i] - 96) * x) % 1234567891;
 
         x = (x * 31) % 1234567891;
     }
