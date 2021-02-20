@@ -5,7 +5,7 @@
 using namespace std;
 
 int N, M;
-int minimum = 0;
+int maximum = 0;
 
 int map[8][8];
 int temp[8][8];
@@ -32,10 +32,12 @@ void bfs() {
             int nx = x + dx[i];
             int ny = y + dy[i];
             if(nx >= 0 && nx < N && ny >= 0 && ny < M) {
-                if(visit[nx][ny] == false && map[nx][ny] == 0) {
+                if(visit[nx][ny] == false && temp[nx][ny] == 0) {
+                    // temp배열에서 벽 또는 바이러스가 없을 경우
                     tempQueue.push({nx, ny});
                     visit[nx][ny] = true;
                     temp[nx][ny] = 2;
+                    // 바이러스가 퍼짐
                 }
             }
         }
@@ -51,7 +53,7 @@ int main() {
             cin >> map[i][j];
             if(map[i][j] == 2) {
                 q.push({i, j});
-                //바이러스가 있는 위치는 바로 큐에 넣음
+                // 바이러스가 있는 위치는 바로 큐에 넣음
             }
         }
     }
@@ -85,7 +87,8 @@ int main() {
                                                 }
                                             }
                                         }
-                                        minimum = minimum < cnt ? cnt : minimum;
+                                        maximum = maximum < cnt ? cnt : maximum;
+                                        // 안전영역의 최댓값
                                         cnt = 0;
 
                                         map[i][j] = 0;
@@ -104,7 +107,7 @@ int main() {
         }
     }
 
-    printf("%d\n", minimum);
+    printf("%d\n", maximum);
 
     return 0;
 }
