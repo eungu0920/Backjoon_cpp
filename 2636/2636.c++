@@ -64,6 +64,7 @@ void meltingCheese() {
 int main() {
     cin >> N >> M;
 
+    // 치즈 입력
     for(int i = 0; i < N; i++) {
         for(int j = 0; j < M; j++) {
             cin >> map[i][j];
@@ -72,22 +73,6 @@ int main() {
 
     while(true) {
         counting = 0;
-        for(int x = 0; x < N; x++) {
-            for(int y = 0; y < M; y++) {
-                if(map[x][y] == 1) {
-                    counting++;
-                }
-            }
-        }
-        minimum = counting;
-
-        memset(visit, false, sizeof(visit));
-        q.push({0, 0});
-        airBfs();
-        meltingCheese();
-        hours++;
-
-        counting = 0;
 
         for(int x = 0; x < N; x++) {
             for(int y = 0; y < M; y++) {
@@ -96,10 +81,26 @@ int main() {
                 }
             }
         }
-        
+
         if(counting == 0) {
             break;
+        } else {
+            minimum = counting;
         }
+
+        memset(visit, false, sizeof(visit));
+        // visit 배열 초기화
+
+        q.push({0, 0});
+        // map[0][0]은 항상 0이므로 공기가 들어가지 않은 구멍층과 구분가능
+
+        airBfs();
+        // 공기인 부분 탐색
+
+        meltingCheese();
+        // 치즈 녹이기
+
+        hours++;
 
     }
 
