@@ -23,8 +23,8 @@ ll result[1000][1000];
 
 int N;
 
-int dx[4] = {1, -1, 0, 0};
-int dy[4] = {0, 0, 1, -1};
+int dx[4] = {1, 0, -1, 0};
+int dy[4] = {0, 1, 0, -1};
 
 queue<pair<int, int>> q;
 
@@ -58,6 +58,31 @@ void bfs(int x, int y) {
     }
 }
 
+void bfs_Robots() {
+    q.push({0,0});
+
+    while(!q.empty()) {
+        int x = q.front().first;
+        int y = q.front().second;
+        q.pop();
+        for(int i = 0; i < 2; i++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+            if(nx < N && ny < N) {
+                if(map[nx][ny] != '#') {
+                    if(nx == 0) {
+                        result[nx][ny] = result[nx][ny-1] % MOD;
+                    } else if(ny == 0) {
+                        result[nx][ny] = result[nx-1][ny] % MOD;
+                    } else {
+                        result[nx][ny] = (result[nx-1][ny] + result[nx][ny-1]) % MOD;
+                    }
+                }
+            }
+        }
+    }
+}
+
 int main() {
     scanf("%d", &N);
 
@@ -81,6 +106,9 @@ int main() {
 
     result[0][0] = 1;   // 시작 위치에 갈 수 있는 방법은 한가지 뿐이다.
 
+    bfs_Robots();
+
+/*
     //  경우의 수 계산 시작
     for(int x = 0; x < N; x++) {
         for(int y = 0; y < N; y++) {
@@ -99,6 +127,7 @@ int main() {
             }
         }
     }
+*/
 
     if(result[N-1][N-1] == 0 && map[N-1][N-1] == 'C') {
         /*
