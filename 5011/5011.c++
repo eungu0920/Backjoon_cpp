@@ -4,10 +4,10 @@
 
 using namespace std;
 
-// 메모리 초과 발생함 답은 제대로 나오는 것 같음.
+// 1시도 메모리 초과 발생함 답은 제대로 나오는 것 같음.
+// 2시도 bool 타입을 제거 했음에도 메모리 초과 발생
 
 char map[1000][1000];
-bool visit[1000][1000];
 int result[1000][1000];
 
 int N;
@@ -29,7 +29,7 @@ void bfs() {
             int nx = x + dx[i];
             int ny = y + dy[i];
             if(nx < N && ny < N) {
-                if(visit[nx][ny] == false) {
+                if(map[nx][ny] != '#') {
                     q.push({nx, ny});
                     if(nx > 0 && ny > 0) {
                         result[nx][ny] = result[nx][ny-1] + result[nx-1][ny];
@@ -52,9 +52,6 @@ int main() {
         cin >> temp;
         for(int y = 0; y < N; y++) {
             map[x][y] = temp[y];
-            if(map[x][y] == '#') {
-                visit[x][y] = true;
-            }
         }
     }
 
